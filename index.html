@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Synergy HomeCare - Recruitment Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Header Section -->
+        <header class="dashboard-header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="company-info">
+                        <h1 class="company-name">Synergy HomeCare</h1>
+                        <p class="company-subtitle">CT05, SYNERGY HomeCare of Fairfield</p>
+                        <p class="report-period">January - October 2025 (YTD)</p>
+                    </div>
+                    <div class="view-toggle">
+                        <button id="ytdView" class="btn btn--primary active">YTD Summary</button>
+                        <button id="monthlyView" class="btn btn--secondary">Monthly Details</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Key Metrics Section -->
+        <section class="metrics-section">
+            <div class="container">
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-icon applications">📄</div>
+                        <div class="metric-content">
+                            <h3 class="metric-value">2,497</h3>
+                            <p class="metric-label">Total Applications</p>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon interviews">🗣️</div>
+                        <div class="metric-content">
+                            <h3 class="metric-value">611</h3>
+                            <p class="metric-label">Interviews</p>
+                            <span class="conversion-rate">24.5% of applications</span>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon offers">📋</div>
+                        <div class="metric-content">
+                            <h3 class="metric-value">131</h3>
+                            <p class="metric-label">Offers Made</p>
+                            <span class="conversion-rate">21.4% of interviews</span>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon hires">✅</div>
+                        <div class="metric-content">
+                            <h3 class="metric-value">44</h3>
+                            <p class="metric-label">Hires</p>
+                            <span class="conversion-rate">1.8% of applications</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Dashboard Content -->
+        <main class="dashboard-main">
+            <div class="container">
+                <div class="dashboard-grid">
+                    <!-- Monthly Applications Trend -->
+                    <div class="chart-card">
+                        <div class="card__header">
+                            <h2>Monthly Applications Trend</h2>
+                            <p class="chart-subtitle">Application volume throughout 2025</p>
+                        </div>
+                        <div class="card__body">
+                            <div class="chart-container">
+                                <canvas id="monthlyTrendChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Weekly Applications -->
+                    <div class="chart-card">
+                        <div class="card__header">
+                            <h2>Weekly Applications Pattern</h2>
+                            <select id="monthFilter" class="form-control month-filter">
+                                <option value="all">All Months</option>
+                                <option value="2025-01">January 2025</option>
+                                <option value="2025-02">February 2025</option>
+                                <option value="2025-03">March 2025</option>
+                                <option value="2025-04">April 2025</option>
+                                <option value="2025-05">May 2025</option>
+                                <option value="2025-06">June 2025</option>
+                                <option value="2025-07">July 2025</option>
+                                <option value="2025-08">August 2025</option>
+                                <option value="2025-09">September 2025</option>
+                                <option value="2025-10">October 2025</option>
+                            </select>
+                        </div>
+                        <div class="card__body">
+                            <div class="chart-container">
+                                <canvas id="weeklyChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Application Sources -->
+                    <div class="chart-card">
+                        <div class="card__header">
+                            <h2>Top Application Sources</h2>
+                            <p class="chart-subtitle">Where candidates are coming from</p>
+                        </div>
+                        <div class="card__body">
+                            <div class="chart-container">
+                                <canvas id="sourcesChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Job Titles Performance -->
+                    <div class="chart-card">
+                        <div class="card__header">
+                            <h2>Job Titles Performance</h2>
+                            <p class="chart-subtitle">Top 10 positions by applications</p>
+                        </div>
+                        <div class="card__body">
+                            <div class="chart-container">
+                                <canvas id="jobTitlesChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Application Status Breakdown -->
+                    <div class="chart-card">
+                        <div class="card__header">
+                            <h2>Application Status Distribution</h2>
+                            <p class="chart-subtitle">Current status of all applications</p>
+                        </div>
+                        <div class="card__body">
+                            <div class="chart-container">
+                                <canvas id="statusChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Interview vs Applications -->
+                    <div class="chart-card">
+                        <div class="card__header">
+                            <h2>Applications vs Interviews</h2>
+                            <p class="chart-subtitle">Monthly comparison</p>
+                        </div>
+                        <div class="card__body">
+                            <div class="chart-container">
+                                <canvas id="interviewComparisonChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Source Performance Table -->
+                    <div class="chart-card full-width">
+                        <div class="card__header">
+                            <h2>Source Performance Analysis</h2>
+                            <p class="chart-subtitle">Detailed conversion metrics by source</p>
+                        </div>
+                        <div class="card__body">
+                            <div class="table-responsive">
+                                <table class="performance-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Source</th>
+                                            <th>Applications</th>
+                                            <th>Interviews</th>
+                                            <th>Offers</th>
+                                            <th>Hires</th>
+                                            <th>Interview Rate</th>
+                                            <th>Offer Rate</th>
+                                            <th>Hire Rate</th>
+                                            <th>App-to-Hire</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="sourceTableBody">
+                                        <!-- Table content will be populated by JavaScript -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="dashboard-footer">
+            <div class="container">
+                <p>&copy; 2025 Synergy HomeCare. Dashboard generated on <span id="currentDate"></span></p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
